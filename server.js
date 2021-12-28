@@ -20,7 +20,26 @@ app.get("/users", function(req, res) {
 app.post("/adduserwithlocation", function(req, res) {
 
     if(users.find(user => user.name === req.body.name)) {
-        app.route("/adduserwithlocation");
+        app.put("/updateuserwithlocation", function(req, res) {
+            if(users.find(user => user.name === req.body.name)) {
+                users.forEach(user => {
+                    if(user.name === req.body.name) {
+                        user.latitude = req.body.latitude;
+                        user.longitude = req.body.longitude;
+                    }
+                })
+                res.send(users);
+            } else {
+                res.send("User does not exist");
+            }
+            console.log(users);
+            res.send(users);
+        }
+        )
+        
+
+
+
         res.send("User already exists");
     } else {
         console.log(req.body);
