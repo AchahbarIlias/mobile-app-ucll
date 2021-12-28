@@ -19,7 +19,7 @@ app.get("/users", function(req, res) {
 
 app.post("/adduserwithlocation", function(req, res) {
     console.log(req.body);
-    users.push({username: req.query.username, latitude: req.query.latitude, longitude: req.query.longitude});
+    users.push({username: req.body.username, latitude: req.body.latitude, longitude: req.body.longitude});
     console.log(users);
     res.send(users);
 })
