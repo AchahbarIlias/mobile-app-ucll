@@ -20,6 +20,7 @@ app.get("/users", function(req, res) {
 app.post("/adduserwithlocation", function(req, res) {
 
     if(users.find(user => user.name === req.body.name)) {
+        app.route("/adduserwithlocation");
         res.send("User already exists");
     } else {
         console.log(req.body);
