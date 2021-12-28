@@ -18,10 +18,16 @@ app.get("/users", function(req, res) {
 })
 
 app.post("/adduserwithlocation", function(req, res) {
-    console.log(req.body);
-    users.push({username: req.body.username, latitude: req.body.latitude, longitude: req.body.longitude});
-    console.log(users);
-    res.send(users);
+
+    if(users.find(user => user.name === req.body.name)) {
+        res.send("User already exists");
+    } else {
+        console.log(req.body);
+        users.push({username: req.body.username, latitude: req.body.latitude, longitude: req.body.longitude});
+        console.log(users);
+        res.send(users);
+    }
+    
 })
 
 app.put("/updateuserwithlocation", function(req, res) {
