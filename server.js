@@ -29,8 +29,10 @@ app.post("/adduserwithlocation", function(req, res) {
             })
             res.send(users);
         } else {
-            res.send("User does not exist");
+            users.push({username: req.body.username, latitude: req.body.latitude, longitude: req.body.longitude});
+            res.send(users);
         }
+
         res.send("User already exists");
     } else {
         console.log(req.body);
