@@ -20,19 +20,6 @@ app.get("/users", function(req, res) {
 app.post("/adduserwithlocation", function(req, res) {
 
     if(users.find(user => user.name === req.body.name)) {
-        if(users.find(user => user.name === req.body.name)) {
-            users.forEach(user => {
-                if(user.name === req.body.name) {
-                    user.latitude = req.body.latitude;
-                    user.longitude = req.body.longitude;
-                }
-            })
-            res.send(users);
-        } else {
-            users.push({username: req.body.username, latitude: req.body.latitude, longitude: req.body.longitude});
-            res.send(users);
-        }
-
         res.send("User already exists");
     } else {
         console.log(req.body);
