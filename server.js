@@ -27,15 +27,20 @@ app.post("/adduserwithlocation", function(req, res) {
         console.log(users);
         res.send(users);
     }
-    
+
 })
 
 app.put("/updateuserwithlocation", function(req, res) {
-    for (let i = 0; index < users.length; i++) {
-        if(users[i].username == req.body.username) {
-            users[i].latitude = req.body.latitude;
-            users[i].longitude = req.body.longitude;
-        }
+    if(users.find(user => user.name === req.body.name)) {
+        users.forEach(user => {
+            if(user.name === req.body.name) {
+                user.latitude = req.body.latitude;
+                user.longitude = req.body.longitude;
+            }
+        })
+        res.send(users);
+    } else {
+        res.send("User does not exist");
     }
     console.log(users);
     res.send(users);
