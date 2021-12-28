@@ -10,7 +10,7 @@ app.listen(port, function() {
 })
 
 
-var users = [{ username: "", latitude: "", longitude: "" }];
+var users = [];
 
 app.get("/users", function(req, res) {
     console.log(users);
