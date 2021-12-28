@@ -22,12 +22,11 @@ app.post("/adduserwithlocation", function(req, res) {
     if(users.find(user => user.name === req.body.name)) {
         users.forEach(user => {
             if(user.name === req.body.name) {
-                user.latitude = req.body.latitude;
+                user.latitude = req.body.latitude;  
                 user.longitude = req.body.longitude;
             }
         })
-        res.send(users);
-
+        res.send("User already exists but changed location" + users);
     } else {
         console.log(req.body);
         users.push({username: req.body.username, latitude: req.body.latitude, longitude: req.body.longitude});
@@ -41,7 +40,7 @@ app.put("/updateuserwithlocation", function(req, res) {
     if(users.find(user => user.name === req.body.name)) {
         users.forEach(user => {
             if(user.name === req.body.name) {
-                user.latitude = req.body.latitude;
+                user.latitude = req.body.latitude;  
                 user.longitude = req.body.longitude;
             }
         })
